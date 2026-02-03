@@ -11,11 +11,12 @@ gsap.registerPlugin(ScrollTrigger);
 export function Hero() {
   const container = useRef<HTMLDivElement>(null);
   const bgRef = useRef<HTMLDivElement>(null);
-  
+  const textRef = useRef<HTMLDivElement>(null);
+
   useGSAP(() => {
     // Parallax Background
     gsap.to(bgRef.current, {
-      yPercent: 30,
+      yPercent: 20,
       scale: 1.1,
       ease: "none",
       scrollTrigger: {
@@ -26,87 +27,109 @@ export function Hero() {
       },
     });
 
-    // Entrance Animation
-    const tl = gsap.timeline({ defaults: { ease: "power4.out" } });
-    
+    // Elegant Entrance
+    const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
+
     tl.fromTo(".hero-badge", 
-      { scale: 0.8, opacity: 0, y: -20 }, 
-      { scale: 1, opacity: 1, y: 0, duration: 1.2 }
+      { y: -20, opacity: 0 }, 
+      { y: 0, opacity: 1, duration: 1, delay: 0.2 }
     )
-    .fromTo(".hero-title-line", 
-      { y: 120, opacity: 0, rotateX: -45 }, 
-      { y: 0, opacity: 1, rotateX: 0, stagger: 0.2, duration: 1.5, ease: "expo.out" }, 
-      "-=0.8"
+    .fromTo(".reveal-text", 
+      { y: 100, opacity: 0, rotateX: 10 }, 
+      { y: 0, opacity: 1, rotateX: 0, stagger: 0.15, duration: 1.4, ease: "expo.out" }, 
+      "-=0.6"
     )
     .fromTo(".hero-desc", 
-      { y: 30, opacity: 0 }, 
+      { y: 20, opacity: 0 }, 
       { y: 0, opacity: 1, duration: 1 }, 
       "-=1.0"
     )
     .fromTo(".hero-btn", 
-      { y: 30, opacity: 0 }, 
-      { y: 0, opacity: 1, stagger: 0.15, duration: 1 }, 
+      { y: 20, opacity: 0 }, 
+      { y: 0, opacity: 1, stagger: 0.1, duration: 1 }, 
       "-=0.8"
     );
-    
-    // Ambient floating for decorative elements
-    gsap.fromTo(".ornament-float",
-      { y: 0 },
-      { y: -15, duration: 4, repeat: -1, yoyo: true, ease: "sine.inOut" }
-    );
-    
+
+    // Floating animation for ornaments
+    gsap.to(".ornament", {
+      y: -15,
+      duration: 3,
+      repeat: -1,
+      yoyo: true,
+      ease: "sine.inOut",
+      stagger: 1
+    });
+
   }, { scope: container });
 
   return (
-    <section ref={container} className="relative h-screen w-full overflow-hidden flex items-center justify-center">
+    <section ref={container} className="relative h-[110vh] w-full overflow-hidden flex items-center justify-center bg-maroon-dark">
+      
       {/* Dynamic Background */}
       <div ref={bgRef} className="absolute inset-0 z-0 h-[120%] w-full -top-[10%] pointer-events-none">
-         <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1629196914168-3a2652305f9e?q=80&w=2070&auto=format&fit=crop')] bg-cover bg-center opacity-40 brightness-[0.4] saturate-[1.2]" />
-         <div className="absolute inset-0 bg-gradient-to-t from-background via-maroon/20 to-transparent mix-blend-overlay" />
-         <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(212,175,55,0.15)_0%,transparent_60%)]" />
+         {/* Main Image */}
+         <div className="absolute inset-0 bg-[url('/hero-bg.png')] bg-cover bg-center opacity-60 mix-blend-overlay" />
+         
+         {/* Gradients for depth */}
+         <div className="absolute inset-0 bg-gradient-to-b from-maroon-dark/80 via-transparent to-maroon-dark/90" />
+         <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(212,175,55,0.08)_0%,transparent_70%)]" />
       </div>
-      
-      {/* Decorative Ornaments */}
-      <div className="ornament-float absolute top-20 left-10 md:left-20 h-40 w-40 border-l border-t border-gold/20 opacity-60 hidden md:block rounded-tl-[3rem]" />
-      <div className="ornament-float absolute bottom-20 right-10 md:right-20 h-40 w-40 border-r border-b border-gold/20 opacity-60 hidden md:block rounded-br-[3rem]" />
 
-      <div className="container relative z-10 flex flex-col items-center justify-center px-4 md:px-6 text-center">
-        <div className="max-w-5xl space-y-10">
-          
-          <div className="hero-badge mx-auto inline-flex items-center gap-3 rounded-full border border-gold/30 bg-maroon-dark/40 px-6 py-2 text-xs font-bold tracking-[0.25em] text-gold backdrop-blur-md shadow-[0_0_20px_rgba(212,175,55,0.15)] uppercase">
-            <span className="h-1.5 w-1.5 rounded-full bg-gold animate-pulse-slow shadow-[0_0_10px_#D4AF37]" />
-            Since 1956
-            <span className="h-1.5 w-1.5 rounded-full bg-gold animate-pulse-slow shadow-[0_0_10px_#D4AF37]" />
-          </div>
-          
-          <h1 className="flex flex-col items-center font-serif text-5xl font-normal leading-[1.0] md:text-8xl lg:text-9xl drop-shadow-2xl">
-            <span className="hero-title-line block text-gradient-gold pb-2">
-              Divine Aromas.
-            </span>
-            <span className="hero-title-line block text-maroon-dark mix-blend-multiply opacity-90 absolute blur-3xl scale-110">
-              Divine Aromas.
-            </span>
-            <span className="hero-title-line block text-charcoal/90 italic mt-2">
-              Timeless Tradition.
-            </span>
-          </h1>
-          
-          <p className="hero-desc mx-auto max-w-2xl text-lg text-charcoal/80 md:text-2xl font-light leading-relaxed tracking-wide">
-            Crafting India's finest incense, dhoop, and fragrances with 
-            <span className="font-serif italic text-maroon font-semibold px-2 text-3xl align-middle">devotion</span> 
-            to purify your home and soul.
-          </p>
-          
-          <div className="flex flex-col items-center justify-center gap-6 pt-8 sm:flex-row">
-            <Button size="xl" className="hero-btn shadow-[0_10px_30px_rgba(107,15,26,0.2)] bg-maroon hover:bg-maroon-dark text-white border border-gold/20 transition-all hover:scale-105 active:scale-95 duration-500 rounded-full px-12">
-              Explore Collection
-            </Button>
-            <Button size="xl" variant="outline" className="hero-btn shadow-lg border-maroon/20 hover:border-gold/50 text-maroon hover:bg-maroon/5 transition-all hover:scale-105 active:scale-95 duration-500 rounded-full px-10">
-              Order via WhatsApp
-            </Button>
-          </div>
+      {/* Decorative Ornaments (SVGs or refined shapes) */}
+      <div className="ornament absolute top-1/4 left-10 md:left-20 w-64 h-64 border border-gold/10 rounded-full blur-[1px] opacity-40 hidden lg:block" />
+      <div className="ornament absolute bottom-1/4 right-10 md:right-20 w-48 h-48 border border-gold/10 rounded-full blur-[1px] opacity-40 hidden lg:block" />
+      
+      {/* Content */}
+      <div ref={textRef} className="container relative z-10 flex flex-col items-center justify-center px-4 text-center mt-[-5vh]">
+        
+        {/* Badge */}
+        <div className="hero-badge mb-8 inline-flex items-center gap-3 rounded-full border border-gold/20 bg-black/20 px-4 py-1.5 text-[0.7rem] font-bold tracking-[0.3em] text-gold uppercase backdrop-blur-sm">
+          <span className="h-1 w-1 rounded-full bg-gold" />
+          Est. 1956
+          <span className="h-1 w-1 rounded-full bg-gold" />
         </div>
+
+        {/* Main Heading */}
+        <h1 className="font-serif text-6xl md:text-8xl lg:text-[10rem] leading-[0.9] text-sand tracking-tight drop-shadow-2xl">
+          <div className="overflow-hidden">
+            <span className="reveal-text block text-gradient-gold pb-4">Divine</span>
+          </div>
+          <div className="overflow-hidden">
+            <span className="reveal-text block text-sand/90 italic font-light mix-blend-overlay">Aromas</span>
+          </div>
+        </h1>
+
+        {/* Subtitle / Description */}
+        <p className="hero-desc mt-8 max-w-xl text-lg md:text-xl text-sand-dark/80 font-light leading-relaxed tracking-wide">
+          Experience the sacred art of fragrance. 
+          Handrolled incense that purifies your space and elevates your spirit.
+        </p>
+
+        {/* Buttons */}
+        <div className="mt-10 flex flex-col sm:flex-row items-center gap-5">
+          <Button 
+            size="lg" 
+            className="hero-btn h-14 px-10 rounded-full bg-gold text-maroon-dark hover:bg-white hover:text-maroon font-serif text-lg transition-all duration-500 shadow-[0_0_30px_rgba(212,175,55,0.3)] hover:shadow-[0_0_50px_rgba(212,175,55,0.5)]"
+          >
+            Shop Collection
+          </Button>
+          <Button 
+            variant="ghost" 
+            size="lg" 
+            className="hero-btn h-14 px-8 rounded-full text-sand hover:text-gold hover:bg-white/5 border border-white/10 hover:border-gold/30 transition-all duration-500 font-serif tracking-wide"
+          >
+            Our Heritage
+          </Button>
+        </div>
+
       </div>
+
+      {/* Scroll Indicator */}
+      <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-60 animate-bounce cursor-pointer">
+        <span className="text-[10px] uppercase tracking-widest text-sand/50">Scroll</span>
+        <div className="w-[1px] h-12 bg-gradient-to-b from-gold/0 via-gold/50 to-gold/0" />
+      </div>
+
     </section>
   );
 }
