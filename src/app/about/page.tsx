@@ -1,6 +1,6 @@
 "use client";
 
-import Image from "next/image";
+import { ImageWithLoader } from "@/components/ui/ImageWithLoader";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { useRef } from "react";
@@ -30,10 +30,11 @@ export default function AboutPage() {
       {/* Hero */}
       <section className="relative h-[60vh] flex items-center justify-center">
         <div className="absolute inset-0 z-0">
-           <Image 
+           <ImageWithLoader 
              src="https://images.unsplash.com/photo-1606293926075-69a00dbfde81?q=80&w=2070&auto=format&fit=crop"
              alt="Traditional Incense"
              fill
+             priority
              className="object-cover brightness-50 sepia-[0.3]"
            />
            <div className="absolute inset-0 bg-gradient-to-t from-sand via-maroon/20 to-transparent" />
@@ -67,7 +68,7 @@ export default function AboutPage() {
                </p>
             </div>
             <div className="relative h-[500px] border-8 border-white shadow-2xl rotate-2 hover:rotate-0 transition-transform duration-700">
-               <Image 
+               <ImageWithLoader 
                  src="https://images.unsplash.com/photo-1629196914168-3a2652305f9e?q=80&w=2070&auto=format&fit=crop"
                  alt="Making Process"
                  fill

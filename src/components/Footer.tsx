@@ -2,13 +2,20 @@
 
 import Link from "next/link";
 import { Facebook, Instagram, Twitter, Mail, MapPin, Phone } from "lucide-react";
-import Image from "next/image";
+import { ImageWithLoader } from "@/components/ui/ImageWithLoader";
 
 export function Footer() {
   return (
     <footer className="relative bg-maroon-dark text-temple-white overflow-hidden">
       {/* Mandala/Pattern Background */}
-      <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/black-scales.png')] opacity-20 mix-blend-soft-light" />
+      <div className="absolute inset-0 z-0">
+        <ImageWithLoader 
+          src="/asset 53.png" 
+          alt="Footer Pattern" 
+          fill 
+          className="object-cover opacity-20 mix-blend-soft-light"
+        />
+      </div>
       <div className="absolute -top-20 -right-20 w-96 h-96 bg-gold/10 rounded-full blur-3xl pointer-events-none" />
       <div className="absolute -bottom-20 -left-20 w-96 h-96 bg-maroon-light/20 rounded-full blur-3xl pointer-events-none" />
       

@@ -3,7 +3,7 @@
 import { useCart } from "@/context/CartContext";
 import { X, Minus, Plus, ShoppingBag, Trash2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import Image from "next/image";
+import { ImageWithLoader } from "@/components/ui/ImageWithLoader";
 import { cn } from "@/lib/utils";
 import { useEffect, useState } from "react";
 
@@ -79,7 +79,7 @@ export function CartDrawer() {
               items.map((item) => (
                 <div key={item.id} className="flex gap-4 bg-white p-4 rounded-xl border border-gold/10 shadow-sm relative group overflow-hidden">
                   <div className="relative h-20 w-20 shrink-0 overflow-hidden rounded-md border border-maroon/10">
-                    <Image
+                    <ImageWithLoader
                       src={item.image}
                       alt={item.name}
                       fill

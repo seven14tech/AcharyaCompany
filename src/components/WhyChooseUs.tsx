@@ -1,3 +1,5 @@
+import { ImageWithLoader } from "@/components/ui/ImageWithLoader";
+
 export function WhyChooseUs() {
   return (
     <section className="relative py-24 overflow-hidden">
@@ -45,7 +47,13 @@ export function WhyChooseUs() {
              
              <div className="relative z-10 aspect-square overflow-hidden rounded-2xl shadow-2xl">
                 {/* Main Image */}
-                <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1528641123281-9b16828593a2?q=80&w=2070&auto=format&fit=crop')] bg-cover bg-center transition-transform duration-1000 hover:scale-105"></div>
+                {/* Main Image */}
+                <ImageWithLoader 
+                  src="/ALLINONE.png" 
+                  alt="Why Choose Us" 
+                  fill 
+                  className="object-cover transition-transform duration-1000 hover:scale-105"
+                />
                 <div className="absolute inset-0 bg-gradient-to-tr from-maroon/40 to-transparent mix-blend-multiply"></div>
                 
                 {/* Floating Badge */}

@@ -2,35 +2,35 @@
 
 import { Button } from "@/components/ui/button";
 import { Star } from "lucide-react";
-import Image from "next/image";
+import { ImageWithLoader } from "@/components/ui/ImageWithLoader";
 
 const products = [
   {
     name: "Sandalwood Incense",
     price: "₹150",
     rating: 4.8,
-    image: "https://images.unsplash.com/photo-1602607427188-038c64263076?auto=format&fit=crop&q=80&w=600",
+    image: "/INCENSESTICKS.png",
     tag: "Best Seller"
   },
   {
     name: "Rose Dhoop Cones",
     price: "₹120",
     rating: 4.9,
-    image: "https://images.unsplash.com/photo-1610484730623-01bd74f378a3?auto=format&fit=crop&q=80&w=600",
+    image: "/Dhoop & Cones.png",
     tag: "New"
   },
   {
     name: "Pure Camphor Tablets",
     price: "₹200",
     rating: 5.0,
-    image: "https://images.unsplash.com/photo-1598020974868-6c8aa5d0e28f?auto=format&fit=crop&q=80&w=600",
+    image: "/CAMPHOR.png",
     tag: "Essential"
   },
   {
     name: "Jasmine Soap",
     price: "₹80",
     rating: 4.7,
-    image: "https://images.unsplash.com/photo-1623635747449-74d2219808ac?auto=format&fit=crop&q=80&w=600",
+    image: "/SOAPS.png",
     tag: "Popular"
   }
 ];
@@ -50,13 +50,13 @@ export function BestSellers() {
           {products.map((product, idx) => (
             <div key={idx} className="group overflow-hidden rounded-xl bg-white shadow-sm transition-shadow hover:shadow-md">
               <div className="relative aspect-square overflow-hidden bg-gray-100">
-                <Image
+                <ImageWithLoader
                    src={product.image}
                    alt={product.name}
                    fill
                    className="object-cover transition-transform duration-500 group-hover:scale-110"
                 />
-                <div className="absolute top-2 left-2 rounded bg-maroon px-2 py-0.5 text-xs font-bold text-white">
+                <div className="absolute top-2 left-2 rounded bg-maroon px-2 py-0.5 text-xs font-bold text-white z-20">
                   {product.tag}
                 </div>
               </div>

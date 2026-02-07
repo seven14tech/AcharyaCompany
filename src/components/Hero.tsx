@@ -5,6 +5,7 @@ import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Button } from "@/components/ui/button";
+import { ImageWithLoader } from "@/components/ui/ImageWithLoader";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -68,7 +69,16 @@ export function Hero() {
       {/* Dynamic Background */}
       <div ref={bgRef} className="absolute inset-0 z-0 h-[120%] w-full -top-[10%] pointer-events-none">
          {/* Main Image */}
-         <div className="absolute inset-0 bg-[url('/hero-bg.png')] bg-cover bg-center opacity-60 mix-blend-overlay" />
+         {/* Main Image */}
+         <div className="absolute inset-0 opacity-60 mix-blend-overlay">
+           <ImageWithLoader 
+             src="/asset 18.png" 
+             alt="Hero Background" 
+             fill 
+             priority
+             className="object-cover"
+           />
+         </div>
          
          {/* Gradients for depth */}
          <div className="absolute inset-0 bg-gradient-to-b from-maroon-dark/80 via-transparent to-maroon-dark/90" />
@@ -83,11 +93,16 @@ export function Hero() {
       <div ref={textRef} className="container relative z-10 flex flex-col items-center justify-center px-4 text-center mt-[-5vh]">
         
         {/* Badge */}
-        <div className="hero-badge mb-8 inline-flex items-center gap-3 rounded-full border border-gold/20 bg-black/20 px-4 py-1.5 text-[0.7rem] font-bold tracking-[0.3em] text-gold uppercase backdrop-blur-sm">
+        <div className="hero-badge mb-6 inline-flex items-center gap-3 rounded-full border border-gold/20 bg-black/20 px-4 py-1.5 text-[0.7rem] font-bold tracking-[0.3em] text-gold uppercase backdrop-blur-sm">
           <span className="h-1 w-1 rounded-full bg-gold" />
           Est. 1956
           <span className="h-1 w-1 rounded-full bg-gold" />
         </div>
+
+        {/* Slogan */}
+        <h2 className="reveal-text mb-4 font-serif text-xl md:text-2xl font-bold tracking-[0.2em] text-gold-light uppercase drop-shadow-md">
+          "Bhakti Mai Laye Shakti"
+        </h2>
 
         {/* Main Heading */}
         <h1 className="font-serif text-6xl md:text-8xl lg:text-[10rem] leading-[0.9] text-sand tracking-tight drop-shadow-2xl">
