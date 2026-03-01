@@ -117,3 +117,80 @@ html {
 ::-webkit-scrollbar-thumb:hover {
   background: var(--maroon-dark);
 }
+
+/* Shared motion + surface effects */
+@keyframes fade-up {
+  0% {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes float-slow {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-12px);
+  }
+}
+
+@keyframes soft-pulse {
+  0%, 100% {
+    opacity: 0.6;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+.fade-up {
+  animation: fade-up 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.fade-up-delay-1 {
+  animation-delay: 120ms;
+}
+
+.fade-up-delay-2 {
+  animation-delay: 240ms;
+}
+
+.float-slow {
+  animation: float-slow 7s ease-in-out infinite;
+}
+
+.soft-pulse {
+  animation: soft-pulse 3.2s ease-in-out infinite;
+}
+
+.hero-glow {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(48px);
+  pointer-events: none;
+}
+
+.elevated-card {
+  @apply rounded-2xl border border-white/40 bg-white/70 backdrop-blur-lg shadow-[0_12px_40px_rgba(58,5,11,0.12)] transition-all duration-500;
+}
+
+.elevated-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 24px 60px rgba(58, 5, 11, 0.18);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

@@ -3,9 +3,12 @@
 import { useState } from "react";
 import { useCart } from "@/context/CartContext";
 import { Button } from "@/components/ui/button";
-import { ShoppingBag, Star, Filter } from "lucide-react";
+import { ShoppingBag, Star } from "lucide-react";
 import { ImageWithLoader } from "@/components/ui/ImageWithLoader";
 import { cn } from "@/lib/utils";
+import { Navbar } from "@/components/Navbar";
+import { Footer } from "@/components/Footer";
+import { FloatingWhatsApp } from "@/components/FloatingWhatsApp";
 
 const PRODUCTS = [
   { id: "1", name: "Sandalwood Supreme", category: "Incense", price: 150, image: "/INCENSESTICKS.png", rating: 5 },
@@ -29,17 +32,20 @@ export default function ShopPage() {
     : PRODUCTS.filter(p => p.category === activeCategory);
 
   return (
-    <main className="min-h-screen pt-20 bg-sand">
+    <main className="min-h-screen bg-sand overflow-hidden">
+      <Navbar />
       {/* Hero Header */}
-      <section className="relative h-[40vh] flex items-center justify-center overflow-hidden">
+      <section className="relative h-[48vh] flex items-center justify-center overflow-hidden">
+        <div className="hero-glow -top-10 left-6 h-52 w-52 bg-gold/20 float-slow" />
+        <div className="hero-glow -bottom-16 right-4 h-60 w-60 bg-white/10 soft-pulse" />
         <div className="absolute inset-0 bg-[url('/asset 54.png')] opacity-10 mix-blend-multiply" />
         <div className="absolute inset-0 bg-maroon-dark/90" />
-        <div className="container relative z-10 text-center space-y-4">
-          <span className="text-gold tracking-[0.3em] text-sm uppercase font-bold animate-pulse-slow">Explore Purity</span>
-          <h1 className="font-serif text-5xl md:text-7xl font-bold text-white mb-6 drop-shadow-lg">
+        <div className="container relative z-10 text-center space-y-4 px-4">
+          <span className="fade-up text-gold tracking-[0.3em] text-sm uppercase font-bold animate-pulse-slow">Explore Purity</span>
+          <h1 className="fade-up fade-up-delay-1 font-serif text-5xl md:text-7xl font-bold text-white mb-6 drop-shadow-lg">
             Our Collection
           </h1>
-          <p className="text-white/70 max-w-xl mx-auto font-light text-lg">
+          <p className="fade-up fade-up-delay-2 text-white/70 max-w-xl mx-auto font-light text-lg">
             Discover fragrances that transcend the ordinary and elevate your daily rituals.
           </p>
         </div>
@@ -47,7 +53,7 @@ export default function ShopPage() {
 
       <div className="container mx-auto px-4 py-12">
         {/* Filters */}
-        <div className="flex flex-wrap justify-center gap-4 mb-16 p-4 rounded-full bg-white/40 backdrop-blur-md border border-white/40 shadow-sm max-w-fit mx-auto sticky top-24 z-30">
+        <div className="fade-up flex flex-wrap justify-center gap-4 mb-16 p-4 rounded-full bg-white/50 backdrop-blur-md border border-white/50 shadow-sm max-w-fit mx-auto sticky top-24 z-30">
           {CATEGORIES.map((cat) => (
             <button
               key={cat}
@@ -69,7 +75,7 @@ export default function ShopPage() {
           {filteredProducts.map((product) => (
             <div 
               key={product.id}
-              className="group relative bg-white rounded-xl overflow-hidden border border-gold/10 shadow-lg hover:shadow-2xl hover:-translate-y-2 transition-all duration-500"
+              className="group relative elevated-card overflow-hidden"
             >
               {/* Image */}
               <div className="relative h-64 overflow-hidden">
@@ -122,6 +128,8 @@ export default function ShopPage() {
           </div>
         )}
       </div>
+      <Footer />
+      <FloatingWhatsApp />
     </main>
   );
 }

@@ -2,24 +2,30 @@
 
 import { Button } from "@/components/ui/button";
 import { Mail, MapPin, Phone, Send } from "lucide-react";
+import { Navbar } from "@/components/Navbar";
+import { Footer } from "@/components/Footer";
+import { FloatingWhatsApp } from "@/components/FloatingWhatsApp";
 
 export default function ContactPage() {
   return (
-    <main className="min-h-screen pt-20 bg-sand">
+    <main className="min-h-screen bg-sand overflow-hidden">
+      <Navbar />
       {/* Hero Header */}
-      <section className="relative h-[30vh] flex items-center justify-center overflow-hidden">
+      <section className="relative h-[38vh] flex items-center justify-center overflow-hidden">
+        <div className="hero-glow top-6 left-6 h-44 w-44 bg-gold/20 float-slow" />
+        <div className="hero-glow bottom-0 right-8 h-56 w-56 bg-white/10 soft-pulse" />
         <div className="absolute inset-0 bg-maroon-dark/95" />
         <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/black-scales.png')] opacity-30 mix-blend-soft-light" />
         <div className="container relative z-10 text-center">
-          <h1 className="font-serif text-5xl font-bold text-gold mb-2">
+          <h1 className="fade-up font-serif text-5xl font-bold text-gold mb-2">
             Contact Us
           </h1>
-          <p className="text-white/70">We'd love to hear from you.</p>
+          <p className="fade-up fade-up-delay-1 text-white/70">We&apos;d love to hear from you.</p>
         </div>
       </section>
 
       <div className="container mx-auto px-4 -mt-10 relative z-20 pb-20">
-        <div className="bg-white rounded-2xl shadow-2xl overflow-hidden grid lg:grid-cols-2 border border-gold/20">
+        <div className="elevated-card overflow-hidden grid lg:grid-cols-2 border-gold/20">
           
           {/* Info Side */}
           <div className="bg-maroon p-10 md:p-16 text-white relative overflow-hidden">
@@ -35,8 +41,8 @@ export default function ContactPage() {
                </div>
                
                <div className="space-y-6">
-                 <div className="flex items-start gap-4">
-                   <div className="h-12 w-12 rounded-full bg-white/10 flex items-center justify-center shrink-0 border border-white/20">
+                <div className="group flex items-start gap-4">
+                  <div className="h-12 w-12 rounded-full bg-white/10 flex items-center justify-center shrink-0 border border-white/20 transition-transform duration-300 group-hover:scale-110">
                      <MapPin className="h-5 w-5 text-gold" />
                    </div>
                    <div>
@@ -45,8 +51,8 @@ export default function ContactPage() {
                    </div>
                  </div>
                  
-                 <div className="flex items-start gap-4">
-                   <div className="h-12 w-12 rounded-full bg-white/10 flex items-center justify-center shrink-0 border border-white/20">
+                <div className="group flex items-start gap-4">
+                  <div className="h-12 w-12 rounded-full bg-white/10 flex items-center justify-center shrink-0 border border-white/20 transition-transform duration-300 group-hover:scale-110">
                      <Phone className="h-5 w-5 text-gold" />
                    </div>
                    <div>
@@ -56,8 +62,8 @@ export default function ContactPage() {
                    </div>
                  </div>
                  
-                 <div className="flex items-start gap-4">
-                   <div className="h-12 w-12 rounded-full bg-white/10 flex items-center justify-center shrink-0 border border-white/20">
+                <div className="group flex items-start gap-4">
+                  <div className="h-12 w-12 rounded-full bg-white/10 flex items-center justify-center shrink-0 border border-white/20 transition-transform duration-300 group-hover:scale-110">
                      <Mail className="h-5 w-5 text-gold" />
                    </div>
                    <div>
@@ -76,22 +82,22 @@ export default function ContactPage() {
                 <div className="grid md:grid-cols-2 gap-6">
                   <div className="space-y-2">
                     <label className="text-xs font-bold uppercase tracking-wider text-charcoal/60">First Name</label>
-                    <input type="text" className="w-full border-b border-maroon/20 bg-transparent py-2 focus:border-maroon focus:outline-none transition-colors" placeholder="John" />
+                    <input type="text" className="w-full border-b border-maroon/20 bg-transparent py-2 focus:border-maroon focus:outline-none transition-colors duration-300" placeholder="John" />
                   </div>
                   <div className="space-y-2">
                     <label className="text-xs font-bold uppercase tracking-wider text-charcoal/60">Last Name</label>
-                    <input type="text" className="w-full border-b border-maroon/20 bg-transparent py-2 focus:border-maroon focus:outline-none transition-colors" placeholder="Doe" />
+                    <input type="text" className="w-full border-b border-maroon/20 bg-transparent py-2 focus:border-maroon focus:outline-none transition-colors duration-300" placeholder="Doe" />
                   </div>
                 </div>
                 
                 <div className="space-y-2">
                   <label className="text-xs font-bold uppercase tracking-wider text-charcoal/60">Email Address</label>
-                  <input type="email" className="w-full border-b border-maroon/20 bg-transparent py-2 focus:border-maroon focus:outline-none transition-colors" placeholder="john@example.com" />
+                  <input type="email" className="w-full border-b border-maroon/20 bg-transparent py-2 focus:border-maroon focus:outline-none transition-colors duration-300" placeholder="john@example.com" />
                 </div>
                 
                 <div className="space-y-2">
                   <label className="text-xs font-bold uppercase tracking-wider text-charcoal/60">Message</label>
-                  <textarea rows={4} className="w-full border-b border-maroon/20 bg-transparent py-2 focus:border-maroon focus:outline-none transition-colors resize-none" placeholder="Tell us what you're looking for..." />
+                  <textarea rows={4} className="w-full border-b border-maroon/20 bg-transparent py-2 focus:border-maroon focus:outline-none transition-colors duration-300 resize-none" placeholder="Tell us what you're looking for..." />
                 </div>
                 
                 <Button className="w-full bg-maroon hover:bg-maroon-dark text-white h-12 rounded-lg font-bold shadow-lg hover:shadow-xl transition-all">
@@ -102,7 +108,7 @@ export default function ContactPage() {
         </div>
         
         {/* Simple Map Placeholder */}
-        <div className="mt-12 h-80 w-full rounded-2xl overflow-hidden shadow-lg border border-gold/20 grayscale hover:grayscale-0 transition-all duration-700">
+        <div className="mt-12 h-80 w-full rounded-2xl overflow-hidden shadow-lg border border-gold/20 grayscale hover:grayscale-0 hover:-translate-y-1 transition-all duration-700">
            <iframe 
              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15085.679659424362!2d72.85!3d19.02!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7cf216ec74c6b%3A0xa0e7163f4528340!2sMatunga%2C%20Mumbai%2C%20Maharashtra!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin" 
              width="100%" 
@@ -114,6 +120,8 @@ export default function ContactPage() {
            ></iframe>
         </div>
       </div>
+      <Footer />
+      <FloatingWhatsApp />
     </main>
   );
 }
